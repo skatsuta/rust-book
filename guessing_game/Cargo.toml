@@ -4,4 +4,4 @@ version = "0.1.0"
 authors = ["Soshi Katsuta <katsuta_soshi@cyberagent.co.jp>"]
 
 [dependencies]
-rand = "0.3.0"
+rand = "0.3.14"
