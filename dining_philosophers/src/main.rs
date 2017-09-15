@@ -33,29 +33,23 @@ struct Table {
 }
 
 fn main() {
-    let table = Arc::new(Table { forks: vec![
-        Mutex::new(()),
-        Mutex::new(()),
-        Mutex::new(()),
-        Mutex::new(()),
-        Mutex::new(()),
-    ]});
+    let table = Arc::new(Table {
+        forks: vec![Mutex::new(()), Mutex::new(()), Mutex::new(()), Mutex::new(()), Mutex::new(())],
+    });
 
-    let philosophers = vec![
-        Philosopher::new("Baruch Spinoza", 0, 1),
-        Philosopher::new("Gilles Deleuze", 1, 2),
-        Philosopher::new("Karl Marx", 2, 3),
-        Philosopher::new("Friedrich Nietzsche", 3, 4),
-        Philosopher::new("Michel Foucault", 0, 4),
-    ];
+    let philosophers = vec![Philosopher::new("Baruch Spinoza", 0, 1),
+                            Philosopher::new("Gilles Deleuze", 1, 2),
+                            Philosopher::new("Karl Marx", 2, 3),
+                            Philosopher::new("Friedrich Nietzsche", 3, 4),
+                            Philosopher::new("Michel Foucault", 0, 4)];
 
-    let handles: Vec<_> = philosophers.into_iter().map(|p| {
-        let table = table.clone();
+    let handles: Vec<_> = philosophers.into_iter()
+        .map(|p| {
+            let table = table.clone();
 
-        thread::spawn(move || {
-            p.eat(&table);
+            thread::spawn(move || { p.eat(&table); })
         })
-    }).collect();
+        .collect();
 
     for h in handles {
         h.join().unwrap();
