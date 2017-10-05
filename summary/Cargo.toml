@@ -1,0 +1,12 @@
+[package]
+name = "summary"
+version = "0.1.0"
+authors = ["Soshi Katsuta <soshi.katsuta@gmail.com>"]
+
+[lib]
+name = "mylib"
+path = "src/lib.rs"
+
+[[bin]]
+name = "mybin"
+path = "src/main.rs"
