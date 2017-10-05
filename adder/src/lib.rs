@@ -30,4 +30,10 @@ mod tests {
     fn index_out_of_bounds() {
         vec![1][5];
     }
+
+    #[test]
+    #[ignore]
+    fn expensive_test() {
+        // take an hour to run
+    }
 }
