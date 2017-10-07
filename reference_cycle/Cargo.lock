@@ -1,0 +1,4 @@
+[root]
+name = "reference_cycle"
+version = "0.1.0"
+
